@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 class Main{
   public static void main(String []args)
@@ -12,30 +13,28 @@ class Main{
       nums[i]=in.nextInt();
     }
 
-    int ans;
-    ans=singleNumber(nums);
+    int ans=0;
+    int val=2;
+    ans=fun(val);
     System.out.println("["+ans+"]");
 
   }
   
-  static public int singleNumber(int[] nums) {
-    int ans=0;
-   int cnt=0;
-   int k=0;
-  //  int[] arr=new int[size];
-   if(nums.length==1)
-   {
-     ans=nums[0];
-   }
-   else if(nums.length>1)
-   {
-     for(int i=0;i<nums.length;i++)
-     {
-        k=k^(nums[i]);
-     }
-     ans=k;
-    
-   }
-   return ans;
-}
+  static int fun(int nums) {
+      int cnt=0;
+      if(nums==0)
+      {
+        return 0;
+      }
+      if(nums==1)
+      {
+        return 1;
+      }
+      
+
+      
+      return (fun(nums-2)+fun(nums-1));
+  }
+
+
 }
