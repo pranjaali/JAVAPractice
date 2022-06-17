@@ -1,40 +1,30 @@
 import java.util.Scanner;
-import java.util.Arrays;
 
 class Main{
-  public static void main(String []args)
+  public static void main(String[] args)
   {
     Scanner in=new Scanner(System.in);
-    int size=in.nextInt();
-    int[] nums=new int[size];
-
-    for(int i=0;i<size;i++)
-    {
-      nums[i]=in.nextInt();
+    int target=in.nextInt();
+    int[] array={1,2,3,4,15,44,56};
+    int ans=fun(array,0,array.length,target);
+    System.out.print(ans);
+  }
+  static int fun(int[] array,int s,int e,int target)
+  {
+    if(s>e){
+      return -1;
     }
-
-    int ans=0;
-    int val=2;
-    ans=fun(val);
-    System.out.println("["+ans+"]");
+    int m=s+(e-s)/2;
+    if(array[m]==target)
+    {
+      return m;
+    }
+    if(array[m]>target)
+    {
+      return(fun(array,s,m-1,target));
+    }
+          return(fun(array,m+1,e,target));
+    
 
   }
-  
-  static int fun(int nums) {
-      int cnt=0;
-      if(nums==0)
-      {
-        return 0;
-      }
-      if(nums==1)
-      {
-        return 1;
-      }
-      
-
-      
-      return (fun(nums-2)+fun(nums-1));
-  }
-
-
 }
