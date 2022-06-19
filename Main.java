@@ -1,47 +1,35 @@
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
-class Main{
+import java.util.*;
+
+public class Main{
   public static void main(String[] args)
   {
-    System.out.print("Enter 2D array size : ");
-    Scanner sc=new Scanner(System.in);
-    // int rows=sc.nextInt();/
-    int columns=sc.nextInt();
-    
-    System.out.println("Enter array elements : ");    
-     
-    int twoD[]=new int[columns];
-     
-       
-               
-         for(int j=0; j<columns;j++)
-         {
-             twoD[j]=sc.nextInt();
-         }
-      
-
-      int ans=maxx(twoD);
-      System.out.println(ans);
-  }
-  static int maxx(int[] candies)
-  { 
-    int[] arr=new int[candies.length];
-    for(int i=0;i<candies.length;i++)
+    int k=2;
+    int[] arr={1,2,3,4,5,6,7};
+    int start=0;
+    int end=3;
+    int s=end+1;
+    int e=6;
+    while(start<end)
     {
-      for(int j=0;j<candies.length;j++)
-      {
-        if(candies[i]>candies[j])
-        {
-          arr[i]++;
-        }
-      }
-    }
-    for(int i=0;i<candies.length;i++)
-    {
-      System.out.println("("+arr[i]+")");
-    }
+      arr[start]=arr[start]^arr[end];
+      arr[end]=arr[start]^arr[end];
+      arr[start]=arr[start]^arr[end];
+      start++;
+      end--;
 
-    return 1;
+    }
+    while(s<e)
+    {
+      arr[s]=arr[s]^arr[e];
+      arr[e]=arr[s]^arr[e];
+      arr[s]=arr[s]^arr[e];
+      s++;
+      e--;
+
+    }
+    for(int i=0;i<arr.length;i++)
+    {
+      System.out.println(arr[i]);
+    }
   }
 }
