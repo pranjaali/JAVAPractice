@@ -3,25 +3,17 @@ public class Main{
   public static void main(String[] args)
   {
     int[] arr={90,0,3,4,2,55,7};
-    // int temp=0;
-   for(int i=0;i<arr.length-1;i++)
-   {
-     int smallestIndex=i;
-     for(int j=i+1;j<arr.length;j++)
+     for(int i=1;i<arr.length;i++)
      {
-         if(arr[smallestIndex]>arr[j])
-         {
-           smallestIndex=j;
-         }
+       int j=i-1;
+       int cur=arr[i];
+       while(j>=0 && cur>arr[j])
+       {
+         arr[j+1]=arr[j];
+         j--;
+       }
+       arr[j+1]=cur;
      }
-    //  arr[smallestIndex]=arr[smallestIndex]^arr[i];
-    //  arr[i]=arr[smallestIndex]^arr[i];
-    //  arr[smallestIndex]=arr[smallestIndex]^arr[i];
-     int temp=arr[smallestIndex];
-     arr[smallestIndex]=arr[i];
-     arr[i]=temp;
-   }
-    // printArray(arr);
     for(int j=0;j<arr.length;j++)
     {
       System.out.print(" "+arr[j]);
