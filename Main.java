@@ -1,44 +1,34 @@
 import java.util.List;
-import java.util.Scanner;
 public class Main{
   public static void main(String[] args)
   {
-    Scanner in=new Scanner(System.in);
-    int sizeArray=in.nextInt();
-    int sizeSubArray=in.nextInt();
-    
-    int[] arr=new int[sizeArray];
-    for (int i=0;i<sizeArray;i++)
-    {
-       arr[i]=in.nextInt();
-    }
+    int[] arr={12,-1,-7,8,-16,30,16,28};
+    int windowSize=3;
     int start=0;
-    int end=0;
-    int maxSum=0;
-    int tempSum=0;
-    while(end<sizeSubArray)
-    {
-      maxSum=maxSum+arr[end];
-      // System.out.print(" ("+arr[end]+")");
-      end++;
-    }
-    tempSum=maxSum;
-    System.out.println(" ()="+maxSum);
     
+    int end=0;
+    end=windowSize-1;
+    int firstNegative=0;
+    int index=0;
+
     while(end<arr.length)
-    {  
-       tempSum=tempSum-arr[start]+arr[end];
-      //  System.out.println(" =("+tempSum+"-"+arr[start]+"-"+arr[end]);
-       if(maxSum<tempSum)
+    {
+      int cnt=start;
+      aa: while(cnt<=end)
        {
-         maxSum=tempSum;
-
-        // System.out.println(" ="+maxSum);
+         if(arr[cnt]<0)
+         {
+           firstNegative=arr[cnt];
+           System.out.print(" :"+firstNegative);
+           index=cnt;
+           break aa;
+         }
+         cnt++;
        }
-       end++;
        start++;
-
+       end++;
     }
-    System.out.println("Max Sum SubArray ="+maxSum);
+
+
   }
 }
