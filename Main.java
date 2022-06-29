@@ -1,44 +1,44 @@
-import java.util.*;
-class Main{
+import java.util.List;
+import java.util.Scanner;
+public class Main{
   public static void main(String[] args)
   {
     Scanner in=new Scanner(System.in);
-    int num=in.nextInt();
-    int[] arr=new int[num];
-    System.out.println("Enter the array elements:");
-    for(int i=0;i<arr.length;i++)
+    int sizeArray=in.nextInt();
+    int sizeSubArray=in.nextInt();
+    
+    int[] arr=new int[sizeArray];
+    for (int i=0;i<sizeArray;i++)
     {
        arr[i]=in.nextInt();
     }
-    Solution s=new Solution();
-    s.fun(arr);
-
-
-  }
-}
-class Solution{
-  public void fun(int[] arr)
-  {
-    int temp=0;
-    for(int i=0;i<arr.length;i++)
+    int start=0;
+    int end=0;
+    int maxSum=0;
+    int tempSum=0;
+    while(end<sizeSubArray)
     {
-      // temp=arr[i-1];
-      for(int j=i+1;j<arr.length;j++)
-      {
-        if(arr[i]>arr[j])
-        {
-          temp=arr[i];
-          arr[i]=arr[j];
-          arr[j]=temp;
-        }
-        Arrays.sort(arr);
-        for(int k=0;k<arr.length;k++)
-        {
-          System.out.print(arr[k]);
-        }
-        System.out.println(" ");
-       
-      }
+      maxSum=maxSum+arr[end];
+      // System.out.print(" ("+arr[end]+")");
+      end++;
     }
+    tempSum=maxSum;
+    System.out.println(" ()="+maxSum);
+    
+    while(end<arr.length)
+    {  
+       tempSum=tempSum-arr[start]+arr[end];
+      //  System.out.println(" =("+tempSum+"-"+arr[start]+"-"+arr[end]);
+       if(maxSum<tempSum)
+       {
+         maxSum=tempSum;
+
+        // System.out.println(" ="+maxSum);
+       }
+       end++;
+       start++;
+
+    }
+    System.out.println("Max Sum SubArray ="+maxSum);
   }
 }
