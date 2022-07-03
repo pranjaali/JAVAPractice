@@ -1,37 +1,43 @@
+import java.util.stream.IntStream;
+
 import java.util.*;
-public class Main{
+class Main{
+    
     public static void main(String[] args)
     {
-        Scanner in=new Scanner(System.in);
-          List<Integer> list=new ArrayList<>();
-        int[] arr={1,2,3,4,5,6};
-        int s=0;
-        int e=0;
-        int sum=0;
-        int k=in.nextInt();
-        while(k<arr.length)
+        List<Integer>list=new ArrayList<>();
+     int[] arr={10,4,9,5,8};
+     for(int i:arr)
+     {
+         list.add(i);
+     }
+     int cnt=1;
+     
+    while(!isSorted(list))
+    {
+        for(int i=1;i<list.size();i++)
+     {
+         if(list.get(i-1)<list.get(i))
+         {
+           list.remove(list.get(i));
+         }
+     }
+     cnt++;
+    }
+     System.out.println(cnt);
+    }
+    public static boolean isSorted(List<Integer> list)
+    {
+        for(int i=0;i<list.size();i++)
         {
-            s=0;
-            sum=0;
-            e=0;
-
-            while(e<k)
+            for(int j=i+1;j<list.size();j++)
             {
-                sum+=arr[e++];
+                if(list.get(j)>list.get(i))
+                {
+                    return false;
+                }
             }
-            list.add(sum);
-           System.out.println(" "+e);
-
-            while(e<arr.length)
-            {
-                sum+=arr[e++]-arr[s++];
-                list.add(sum);
-
-            }
-
-            k++;
         }
-        System.out.println(list);
-        System.out.println(list.size());
+        return true;
     }
 }
