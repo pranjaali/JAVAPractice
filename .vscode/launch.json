@@ -9,9 +9,9 @@
         ""
       ],
       "stopAtEntry": false,
-      "cwd": "/home/dell/Desktop/programming/JavaPractice/maincode",
+      "cwd": "/home/dell/Desktop/files/programming/JavaPractice/maincode",
       "environment": [],
-      "program": "/home/dell/Desktop/programming/JavaPractice/maincode/build/Debug/outDebug",
+      "program": "/home/dell/Desktop/files/programming/JavaPractice/maincode/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
       "miDebuggerPath": "/usr/bin/gdb",

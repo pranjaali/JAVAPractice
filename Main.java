@@ -1,43 +1,36 @@
-import java.util.stream.IntStream;
-
 import java.util.*;
-class Main{
-    
-    public static void main(String[] args)
+public class Main{
+    public static void main(String[] args )
     {
-        List<Integer>list=new ArrayList<>();
-     int[] arr={10,4,9,5,8};
-     for(int i:arr)
-     {
-         list.add(i);
-     }
-     int cnt=1;
+
+        String s1 = "GFG";
+        StringBuffer sb1 = new StringBuffer("GFG1");
+        String s2 = sb1.toString();
+        System.out.println(s1.equals(s2));
+        // --------------------------------------
+        String  s="hello";
+        String  t="elloh";
+        boolean ans=false;
+        StringBuffer str=new StringBuffer(s);
      
-    while(!isSorted(list))
-    {
-        for(int i=1;i<list.size();i++)
-     {
-         if(list.get(i-1)<list.get(i))
-         {
-           list.remove(list.get(i));
-         }
-     }
-     cnt++;
-    }
-     System.out.println(cnt);
-    }
-    public static boolean isSorted(List<Integer> list)
-    {
-        for(int i=0;i<list.size();i++)
+        String b=str.toString();
+       
+        do
         {
-            for(int j=i+1;j<list.size();j++)
+            char a=str.charAt(0);
+            for(int i=0;i<str.length()-1;i++)
             {
-                if(list.get(j)>list.get(i))
-                {
-                    return false;
-                }
+                str.setCharAt(i,str.charAt(i+1));
             }
-        }
-        return true;
+            str.setCharAt(str.length()-1,a);
+            // System.out.println(str);
+            
+            b=str.toString();
+            if(b.equals(t))
+            {
+               ans=true;
+            }
+        }while(!s.equals(b));
+          return ans;
     }
 }
