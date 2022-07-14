@@ -1,36 +1,52 @@
 import java.util.*;
 public class Main{
-    public static void main(String[] args )
-    {
 
-        String s1 = "GFG";
-        StringBuffer sb1 = new StringBuffer("GFG1");
-        String s2 = sb1.toString();
-        System.out.println(s1.equals(s2));
-        // --------------------------------------
-        String  s="hello";
-        String  t="elloh";
-        boolean ans=false;
-        StringBuffer str=new StringBuffer(s);
-     
-        String b=str.toString();
-       
-        do
+    static class Fun{
+        List<Integer>list=new ArrayList<>();
+        Fun(int[] arr)
         {
-            char a=str.charAt(0);
-            for(int i=0;i<str.length()-1;i++)
+            for(int i=0;i<arr.length;i++)
             {
-                str.setCharAt(i,str.charAt(i+1));
+                list.add(arr[i]);
             }
-            str.setCharAt(str.length()-1,a);
-            // System.out.println(str);
-            
-            b=str.toString();
-            if(b.equals(t))
+            Collections.sort(list);
+           System.out.println(list);
+
+        }
+        int fun(int i)
+        {
+            int nas=-1;
+            if(i%2==0)
             {
-               ans=true;
+              nas=  list.get(0);
+            list.remove(0);
             }
-        }while(!s.equals(b));
-          return ans;
+            if(i%2!=0)
+            {
+                nas=list.get(list.size()-1);
+                list.remove(list.size()-1);
+            }
+            return nas;
+        }
+    }
+
+
+
+
+
+
+
+
+
+    public static void main(String[] args)
+    {
+        int[] arr={1,4,2,3,5,6,44,33};
+        Fun s=new Fun(arr);
+         for(int j=0;j<arr.length;j++)
+         {
+            System.out.println(s.fun(j)+"     "+s.list);
+         }
+      
+
     }
 }
