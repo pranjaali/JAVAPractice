@@ -1,63 +1,87 @@
 import java.util.*;
+
 public class Main{
-	public static int count(int[] arr)
+	public static int binary_Decimal(int[] arr)
 	{
-		int cnt=0;
-		String[] st=new String[arr.length];
-		
-		for(int i=0;i<st.length;i++)
-		{
-			st[i]=String.valueOf(decToBinary(arr[i]));
-		}
-		int max=0;
-		int[] a=new int[32];
-		for(int i=0;i<st.length;i++)
-		{
-			// System.out.println(st[i]);
-     
-			for(int j=0;j<st[i].length();j++)
+		int num=0;
+         if(arr[0]==1)
+		 {
+            for(int i=0;i<arr.length;i++)
 			{
-				Character ch=st[i].charAt(j);
-				if(ch.compareTo('1')==0)
-				{
-					a[j]+=1;
-				}
-
+				arr[i]=arr[i]^1;
 			}
-		}
-		for(int i=0;i<a.length;i++)
-		{
-			if(max<a[i])
-			{
-				max=a[i];
-			}
-		}
+		     num=convert(	twoSComplement(arr));
+			 num=-num;
 
-		return max;
+		 }
+		 else{
+			 num=convert(arr);
+		 }
+
+
+
+		return num;
 	}
-	public static String decToBinary(int num)
+	public static int[] twoSComplement(int[] arr)
 	{
-		String s="";
-		while(num!=0)
+		int[] n=new int[arr.length];
+		int carry=1;
+         for(int i=arr.length-1;i>=0;i--)
+		 {  
+			if(arr[i] == 1 && carry == 1)  
+			{  
+				n[i] = 0;  
+			}  
+			else if(arr[i] == 0 && carry == 1)  
+			{  
+				n[i] = 1;  
+				carry = 0;  
+			}  
+			else  
+			{  
+				n[i] = arr[i];  
+			}  
+		}  
+
+
+
+		return n;
+	}
+	public static int convert(int[] arr)
+	{
+		int num=0;
+		int j=0;
+		for(int i=arr.length-1;i>=0;i--)
 		{
-			// System.out.print((num%2));
-			s+=String.valueOf(num%2);
-			num=num/2;
+           num+=arr[i]*power(j++);
+
 		}
-		
-		return s;
+
+		return num;
+	}
+	public static int power(int num)
+	{
+		int n=1;
+		int i=1;
+		while(i<=num)
+		{
+			n*=2;
+			i++;
+		}
+		return n;
 	}
 	public static void main(String[] args)
 	{
 		Scanner in=new Scanner(System.in);
-		int num=in.nextInt();
-		  int arr[]=new int[num];
-		  for(int i=0;i<num;i++)
-		  {
-			  arr[i]=in.nextInt();
-		  }
-		  int o=count(arr);
-        //  System.out.println(decToBinary(num));
-		System.out.println(o);
+		int size=in.nextInt();
+		int[] arr=new int[size];
+	
+		for(int i=0;i<size;i++)
+		{
+			arr[i]=in.nextInt();
+		}
+		System.out.println(binary_Decimal(arr));
+
+
 	}
 }
